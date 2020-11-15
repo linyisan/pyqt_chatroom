@@ -1,0 +1,5 @@
+操作系统：Windows 10
+编程语言：Python 3.7.6
+第三方包：pyside2 5.15.1(请在命令行中运行pyqt_chatroom\venv\Scripts\activate.dat，再通过"pip install pyside2"命令安装)
+
+ps:请在命令行中运行pyqt_chatroom\venv\Scripts\activate.dat激活虚拟环境后再进行任何操作
