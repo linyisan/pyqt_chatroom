@@ -18,33 +18,12 @@
     <rect>
      <x>100</x>
      <y>160</y>
-     <width>241</width>
+     <width>231</width>
      <height>23</height>
     </rect>
    </property>
    <property name="value">
     <number>0</number>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cntClosePushButton">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>60</y>
-     <width>75</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>停  止</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -201,6 +180,27 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="recvStopPushButton">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>150</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>停止</string>
    </property>
   </widget>
  </widget>

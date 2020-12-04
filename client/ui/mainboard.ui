@@ -13,12 +13,14 @@
   <property name="windowTitle">
    <string>月聊天室</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>ico/ico.png</normaloff>ico/ico.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">* {
-font: 12pt &quot;Consolas&quot;;
-}
-
-</string>
+font: 12pt &quot;Consolas&quot; ;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
    <property name="leftMargin">
@@ -47,12 +49,21 @@ font: 12pt &quot;Consolas&quot;;
      <property name="styleSheet">
       <string notr="true"/>
      </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
+     </property>
      <widget class="QWidget" name="chatTab">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(216, 205, 237);</string>
+       <string notr="true">background-color: rgb(228, 225, 224);</string>
       </property>
       <attribute name="title">
        <string>聊天</string>
@@ -61,7 +72,14 @@ font: 12pt &quot;Consolas&quot;;
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QTextBrowser" name="chatMsgShowTextBrowser"/>
+          <widget class="QListWidget" name="chatMsgShowListWidget">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::NoSelection</enum>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QTableWidget" name="chatUserOnLineTableWidget">
@@ -117,7 +135,7 @@ font: 12pt &quot;Consolas&quot;;
           </sizepolicy>
          </property>
          <property name="title">
-          <string>GroupBox</string>
+          <string/>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="topMargin">
@@ -134,29 +152,26 @@ font: 12pt &quot;Consolas&quot;;
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="text">
+            <property name="toolTip">
              <string>上传文件</string>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="chatImageUploadPushButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
             <property name="text">
-             <string>上传图片</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>ico/fileupload_ico.png</normaloff>ico/fileupload_ico.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="chatCapturePushButton">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
+           <widget class="QPushButton" name="chatEmojiPushButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -164,17 +179,34 @@ font: 12pt &quot;Consolas&quot;;
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>截图</string>
+             <string>选择表情</string>
             </property>
             <property name="text">
-             <string>截图</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>ico/emoji_ico.png</normaloff>ico/emoji_ico.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="windowsClosePushButton">
+            <property name="maximumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="styleSheet">
-             <string notr="true">visibility: hidden;</string>
+             <string notr="true">color:red;
+visibility: hidden;</string>
             </property>
             <property name="text">
              <string>关闭窗口</string>
@@ -193,6 +225,13 @@ font: 12pt &quot;Consolas&quot;;
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="chatMyNameLabel">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -257,25 +296,10 @@ color:rgb(255, 255, 255);
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="noticeTab">
-      <attribute name="title">
-       <string>公告</string>
-      </attribute>
-      <widget class="QPushButton" name="noticePushButton">
-       <property name="geometry">
-        <rect>
-         <x>380</x>
-         <y>200</y>
-         <width>61</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QWidget" name="fileTab">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <attribute name="title">
        <string>文件</string>
       </attribute>
@@ -309,28 +333,15 @@ color:rgb(255, 255, 255);
           </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="inputMask">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>搜索</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="filesUploadPushButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>上传文件</string>
            </property>
            <property name="styleSheet">
             <string notr="true">background-color:rgb(18, 183, 245);
@@ -343,6 +354,9 @@ color:rgb(255, 255, 255)</string>
          </item>
          <item>
           <widget class="QPushButton" name="filesFlushPushButton">
+           <property name="toolTip">
+            <string>刷新文件列表</string>
+           </property>
            <property name="text">
             <string>刷新</string>
            </property>
@@ -361,6 +375,15 @@ color:rgb(255, 255, 255)</string>
            <height>500</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
          <column>
           <property name="text">
            <string>文件</string>
@@ -374,11 +397,6 @@ color:rgb(255, 255, 255)</string>
          <column>
           <property name="text">
            <string>大小</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>上传者</string>
           </property>
          </column>
          <column>
@@ -397,5 +415,22 @@ color:rgb(255, 255, 255)</string>
  <resources>
   <include location="../../../../Desktop/res/my.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>chatFileUploadPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>filesUploadPushButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>71</x>
+     <y>498</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>703</x>
+     <y>51</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
